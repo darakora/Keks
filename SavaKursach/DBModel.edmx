@@ -1,0 +1,792 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище SKursachModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="adress" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empoleeys">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="adress" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="position_id" Type="int" Nullable="false" />
+          <Property Name="passport_num" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="subject_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="subject_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Platforms">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Positions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="salary" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectGroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="platform_id" Type="int" Nullable="false" />
+          <Property Name="type_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="task_description" Type="nvarchar" MaxLength="2048" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectStages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" Nullable="false" />
+          <Property Name="stage_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectTypes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="date_of_start" Type="date" Nullable="false" />
+          <Property Name="date_of_finish" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectGroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="subject_id" Type="int" Nullable="false" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Empoleeys__posit__5E1FF51F">
+          <End Role="Positions" Type="Self.Positions" Multiplicity="1" />
+          <End Role="Empoleeys" Type="Self.Empoleeys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Empoleeys">
+              <PropertyRef Name="position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empoleeys__subje__5F141958">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Empoleeys" Type="Self.Empoleeys" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Empoleeys">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__subject___4B0D20AB">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Groups" Type="Self.Groups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectGr__group__66B53B20">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="ProjectGroups" Type="Self.ProjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProjectGroups">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectGr__proje__65C116E7">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectGroups" Type="Self.ProjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProjectGroups">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__custom__558AAF1E">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__platfo__53A266AC">
+          <End Role="Platforms" Type="Self.Platforms" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platforms">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="platform_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__type_i__54968AE5">
+          <End Role="ProjectTypes" Type="Self.ProjectTypes" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTypes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectSt__proje__5A4F643B">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="ProjectStages" Type="Self.ProjectStages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProjectStages">
+              <PropertyRef Name="project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectSt__stage__5B438874">
+          <End Role="Stages" Type="Self.Stages" Multiplicity="1" />
+          <End Role="ProjectStages" Type="Self.ProjectStages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stages">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ProjectStages">
+              <PropertyRef Name="stage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubjectGr__group__62E4AA3C">
+          <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+          <End Role="SubjectGroups" Type="Self.SubjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SubjectGroups">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubjectGr__subje__61F08603">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="SubjectGroups" Type="Self.SubjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SubjectGroups">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SKursachModelContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empoleeys" EntityType="Self.Empoleeys" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Platforms" EntityType="Self.Platforms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Positions" EntityType="Self.Positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectGroups" EntityType="Self.ProjectGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectStages" EntityType="Self.ProjectStages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectTypes" EntityType="Self.ProjectTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stages" EntityType="Self.Stages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectGroups" EntityType="Self.SubjectGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Empoleeys__posit__5E1FF51F" Association="Self.FK__Empoleeys__posit__5E1FF51F">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Empoleeys" EntitySet="Empoleeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empoleeys__subje__5F141958" Association="Self.FK__Empoleeys__subje__5F141958">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Empoleeys" EntitySet="Empoleeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__subject___4B0D20AB" Association="Self.FK__Groups__subject___4B0D20AB">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectGr__group__66B53B20" Association="Self.FK__ProjectGr__group__66B53B20">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="ProjectGroups" EntitySet="ProjectGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectGr__proje__65C116E7" Association="Self.FK__ProjectGr__proje__65C116E7">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectGroups" EntitySet="ProjectGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__custom__558AAF1E" Association="Self.FK__Projects__custom__558AAF1E">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__platfo__53A266AC" Association="Self.FK__Projects__platfo__53A266AC">
+            <End Role="Platforms" EntitySet="Platforms" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__type_i__54968AE5" Association="Self.FK__Projects__type_i__54968AE5">
+            <End Role="ProjectTypes" EntitySet="ProjectTypes" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectSt__proje__5A4F643B" Association="Self.FK__ProjectSt__proje__5A4F643B">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectStages" EntitySet="ProjectStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectSt__stage__5B438874" Association="Self.FK__ProjectSt__stage__5B438874">
+            <End Role="Stages" EntitySet="Stages" />
+            <End Role="ProjectStages" EntitySet="ProjectStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubjectGr__group__62E4AA3C" Association="Self.FK__SubjectGr__group__62E4AA3C">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="SubjectGroups" EntitySet="SubjectGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubjectGr__subje__61F08603" Association="Self.FK__SubjectGr__subje__61F08603">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="SubjectGroups" EntitySet="SubjectGroups" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SKursachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__custom__251C81ED" FromRole="Customers" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Empolee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PositionId" Type="Int32" Nullable="false" />
+          <Property Name="PassportNum" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Position" Relationship="Self.FK__Empoleeys__posit__2DB1C7EE" FromRole="Empoleeys" ToRole="Positions" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Empoleeys__subje__2EA5EC27" FromRole="Empoleeys" ToRole="Subjects" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Groups__subject___1A9EF37A" FromRole="Groups" ToRole="Subjects" />
+          <NavigationProperty Name="SubjectGroups" Relationship="SKursachModel.FK__SubjectGr__group__093F5D4E" FromRole="Group" ToRole="SubjectGroups" />
+          <NavigationProperty Name="ProjectGroups" Relationship="SKursachModel.FK__ProjectGr__group__66B53B20" FromRole="Group" ToRole="ProjectGroups" />
+        </EntityType>
+        <EntityType Name="Platform">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__platfo__2334397B" FromRole="Platforms" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Salary" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Empoleeys" Relationship="Self.FK__Empoleeys__posit__2DB1C7EE" FromRole="Positions" ToRole="Empoleeys" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlatformId" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="TaskDescription" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Projects__custom__251C81ED" FromRole="Projects" ToRole="Customers" />
+          <NavigationProperty Name="Platform" Relationship="Self.FK__Projects__platfo__2334397B" FromRole="Projects" ToRole="Platforms" />
+          <NavigationProperty Name="ProjectType" Relationship="Self.FK__Projects__type_i__24285DB4" FromRole="Projects" ToRole="ProjectTypes" />
+          <NavigationProperty Name="ProjectStages" Relationship="Self.FK__ProjectSt__proje__29E1370A" FromRole="Projects" ToRole="ProjectStages" />
+          <NavigationProperty Name="ProjectGroups" Relationship="SKursachModel.FK__ProjectGr__proje__65C116E7" FromRole="Project" ToRole="ProjectGroups" />
+        </EntityType>
+        <EntityType Name="ProjectStage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="StageId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK__ProjectSt__proje__29E1370A" FromRole="ProjectStages" ToRole="Projects" />
+          <NavigationProperty Name="Stage" Relationship="Self.FK__ProjectSt__stage__2AD55B43" FromRole="ProjectStages" ToRole="Stages" />
+        </EntityType>
+        <EntityType Name="ProjectType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK__Projects__type_i__24285DB4" FromRole="ProjectTypes" ToRole="Projects" />
+        </EntityType>
+        <EntityType Name="Stage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FinishDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ProjectStages" Relationship="Self.FK__ProjectSt__stage__2AD55B43" FromRole="Stages" ToRole="ProjectStages" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Empoleeys" Relationship="Self.FK__Empoleeys__subje__2EA5EC27" FromRole="Subjects" ToRole="Empoleeys" />
+          <NavigationProperty Name="Groups" Relationship="Self.FK__Groups__subject___1A9EF37A" FromRole="Subjects" ToRole="Groups" />
+          <NavigationProperty Name="SubjectGroups" Relationship="SKursachModel.FK__SubjectGr__subje__084B3915" FromRole="Subject" ToRole="SubjectGroups" />
+        </EntityType>
+        <Association Name="FK__Projects__custom__251C81ED">
+          <End Role="Customers" Type="SKursachModel.Customer" Multiplicity="1" />
+          <End Role="Projects" Type="SKursachModel.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empoleeys__posit__2DB1C7EE">
+          <End Role="Positions" Type="SKursachModel.Position" Multiplicity="1" />
+          <End Role="Empoleeys" Type="SKursachModel.Empolee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Positions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empoleeys">
+              <PropertyRef Name="PositionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empoleeys__subje__2EA5EC27">
+          <End Role="Subjects" Type="SKursachModel.Subject" Multiplicity="1" />
+          <End Role="Empoleeys" Type="SKursachModel.Empolee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empoleeys">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Groups__subject___1A9EF37A">
+          <End Role="Subjects" Type="SKursachModel.Subject" Multiplicity="1" />
+          <End Role="Groups" Type="SKursachModel.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Groups">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__platfo__2334397B">
+          <End Role="Platforms" Type="SKursachModel.Platform" Multiplicity="1" />
+          <End Role="Projects" Type="SKursachModel.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platforms">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="PlatformId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Projects__type_i__24285DB4">
+          <End Role="ProjectTypes" Type="SKursachModel.ProjectType" Multiplicity="1" />
+          <End Role="Projects" Type="SKursachModel.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectSt__proje__29E1370A">
+          <End Role="Projects" Type="SKursachModel.Project" Multiplicity="1" />
+          <End Role="ProjectStages" Type="SKursachModel.ProjectStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectStages">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectSt__stage__2AD55B43">
+          <End Role="Stages" Type="SKursachModel.Stage" Multiplicity="1" />
+          <End Role="ProjectStages" Type="SKursachModel.ProjectStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectStages">
+              <PropertyRef Name="StageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KursachDBContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="SKursachModel.Customer" />
+          <EntitySet Name="Empoleeys" EntityType="SKursachModel.Empolee" />
+          <EntitySet Name="Groups" EntityType="SKursachModel.Group" />
+          <EntitySet Name="Platforms" EntityType="SKursachModel.Platform" />
+          <EntitySet Name="Positions" EntityType="SKursachModel.Position" />
+          <EntitySet Name="Projects" EntityType="SKursachModel.Project" />
+          <EntitySet Name="ProjectStages" EntityType="SKursachModel.ProjectStage" />
+          <EntitySet Name="ProjectTypes" EntityType="SKursachModel.ProjectType" />
+          <EntitySet Name="Stages" EntityType="SKursachModel.Stage" />
+          <EntitySet Name="Subjects" EntityType="SKursachModel.Subject" />
+          <AssociationSet Name="FK__Projects__custom__251C81ED" Association="Self.FK__Projects__custom__251C81ED">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empoleeys__posit__2DB1C7EE" Association="Self.FK__Empoleeys__posit__2DB1C7EE">
+            <End Role="Positions" EntitySet="Positions" />
+            <End Role="Empoleeys" EntitySet="Empoleeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empoleeys__subje__2EA5EC27" Association="Self.FK__Empoleeys__subje__2EA5EC27">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Empoleeys" EntitySet="Empoleeys" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Groups__subject___1A9EF37A" Association="Self.FK__Groups__subject___1A9EF37A">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Groups" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__platfo__2334397B" Association="Self.FK__Projects__platfo__2334397B">
+            <End Role="Platforms" EntitySet="Platforms" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Projects__type_i__24285DB4" Association="Self.FK__Projects__type_i__24285DB4">
+            <End Role="ProjectTypes" EntitySet="ProjectTypes" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectSt__proje__29E1370A" Association="Self.FK__ProjectSt__proje__29E1370A">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="ProjectStages" EntitySet="ProjectStages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectSt__stage__2AD55B43" Association="Self.FK__ProjectSt__stage__2AD55B43">
+            <End Role="Stages" EntitySet="Stages" />
+            <End Role="ProjectStages" EntitySet="ProjectStages" />
+          </AssociationSet>
+          <EntitySet Name="SubjectGroups" EntityType="SKursachModel.SubjectGroup" />
+          <AssociationSet Name="FK__SubjectGr__group__093F5D4E" Association="SKursachModel.FK__SubjectGr__group__093F5D4E">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="SubjectGroups" EntitySet="SubjectGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubjectGr__subje__084B3915" Association="SKursachModel.FK__SubjectGr__subje__084B3915">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="SubjectGroups" EntitySet="SubjectGroups" />
+          </AssociationSet>
+          <EntitySet Name="ProjectGroups" EntityType="SKursachModel.ProjectGroup" />
+          <AssociationSet Name="FK__ProjectGr__group__66B53B20" Association="SKursachModel.FK__ProjectGr__group__66B53B20">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="ProjectGroups" EntitySet="ProjectGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectGr__proje__65C116E7" Association="SKursachModel.FK__ProjectGr__proje__65C116E7">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectGroups" EntitySet="ProjectGroups" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="SubjectGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="SKursachModel.FK__SubjectGr__group__093F5D4E" FromRole="SubjectGroups" ToRole="Group" />
+          <NavigationProperty Name="Subject" Relationship="SKursachModel.FK__SubjectGr__subje__084B3915" FromRole="SubjectGroups" ToRole="Subject" />
+        </EntityType>
+        <Association Name="FK__SubjectGr__group__093F5D4E">
+          <End Type="SKursachModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="SKursachModel.SubjectGroup" Role="SubjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubjectGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubjectGr__subje__084B3915">
+          <End Type="SKursachModel.Subject" Role="Subject" Multiplicity="1" />
+          <End Type="SKursachModel.SubjectGroup" Role="SubjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubjectGroups">
+              <PropertyRef Name="SubjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProjectGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Group" Relationship="SKursachModel.FK__ProjectGr__group__66B53B20" FromRole="ProjectGroups" ToRole="Group" />
+          <NavigationProperty Name="Project" Relationship="SKursachModel.FK__ProjectGr__proje__65C116E7" FromRole="ProjectGroups" ToRole="Project" />
+        </EntityType>
+        <Association Name="FK__ProjectGr__group__66B53B20">
+          <End Type="SKursachModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="SKursachModel.ProjectGroup" Role="ProjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectGroups">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectGr__proje__65C116E7">
+          <End Type="SKursachModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="SKursachModel.ProjectGroup" Role="ProjectGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectGroups">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SKursachModelContainer" CdmEntityContainer="KursachDBContext">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SKursachModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Adress" ColumnName="adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empoleeys">
+            <EntityTypeMapping TypeName="SKursachModel.Empolee">
+              <MappingFragment StoreEntitySet="Empoleeys">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Surname" ColumnName="surname" />
+                <ScalarProperty Name="Adress" ColumnName="adress" />
+                <ScalarProperty Name="PositionId" ColumnName="position_id" />
+                <ScalarProperty Name="PassportNum" ColumnName="passport_num" />
+                <ScalarProperty Name="SubjectId" ColumnName="subject_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SKursachModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="SubjectId" ColumnName="subject_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Platforms">
+            <EntityTypeMapping TypeName="SKursachModel.Platform">
+              <MappingFragment StoreEntitySet="Platforms">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="SKursachModel.Position">
+              <MappingFragment StoreEntitySet="Positions">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="Salary" ColumnName="salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="SKursachModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="PlatformId" ColumnName="platform_id" />
+                <ScalarProperty Name="TypeId" ColumnName="type_id" />
+                <ScalarProperty Name="CustomerId" ColumnName="customer_id" />
+                <ScalarProperty Name="TaskDescription" ColumnName="task_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectStages">
+            <EntityTypeMapping TypeName="SKursachModel.ProjectStage">
+              <MappingFragment StoreEntitySet="ProjectStages">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="ProjectId" ColumnName="project_id" />
+                <ScalarProperty Name="StageId" ColumnName="stage_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectTypes">
+            <EntityTypeMapping TypeName="SKursachModel.ProjectType">
+              <MappingFragment StoreEntitySet="ProjectTypes">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stages">
+            <EntityTypeMapping TypeName="SKursachModel.Stage">
+              <MappingFragment StoreEntitySet="Stages">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+                <ScalarProperty Name="StartDate" ColumnName="date_of_start" />
+                <ScalarProperty Name="FinishDate" ColumnName="date_of_finish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="SKursachModel.Subject">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectGroups">
+            <EntityTypeMapping TypeName="SKursachModel.SubjectGroup">
+              <MappingFragment StoreEntitySet="SubjectGroups">
+                <ScalarProperty Name="GroupId" ColumnName="group_id" />
+                <ScalarProperty Name="SubjectId" ColumnName="subject_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectGroups">
+            <EntityTypeMapping TypeName="SKursachModel.ProjectGroup">
+              <MappingFragment StoreEntitySet="ProjectGroups">
+                <ScalarProperty Name="GroupId" ColumnName="group_id" />
+                <ScalarProperty Name="ProjectId" ColumnName="project_id" />
+                <ScalarProperty Name="Id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

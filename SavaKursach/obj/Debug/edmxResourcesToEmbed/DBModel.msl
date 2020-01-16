@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище SKursachModelContainer" CdmEntityContainer="KursachDBContext">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="SKursachModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Adress" ColumnName="adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empoleeys">
+      <EntityTypeMapping TypeName="SKursachModel.Empolee">
+        <MappingFragment StoreEntitySet="Empoleeys">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Surname" ColumnName="surname" />
+          <ScalarProperty Name="Adress" ColumnName="adress" />
+          <ScalarProperty Name="PositionId" ColumnName="position_id" />
+          <ScalarProperty Name="PassportNum" ColumnName="passport_num" />
+          <ScalarProperty Name="SubjectId" ColumnName="subject_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="SKursachModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="SubjectId" ColumnName="subject_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Platforms">
+      <EntityTypeMapping TypeName="SKursachModel.Platform">
+        <MappingFragment StoreEntitySet="Platforms">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="SKursachModel.Position">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="Salary" ColumnName="salary" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="SKursachModel.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="PlatformId" ColumnName="platform_id" />
+          <ScalarProperty Name="TypeId" ColumnName="type_id" />
+          <ScalarProperty Name="CustomerId" ColumnName="customer_id" />
+          <ScalarProperty Name="TaskDescription" ColumnName="task_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectStages">
+      <EntityTypeMapping TypeName="SKursachModel.ProjectStage">
+        <MappingFragment StoreEntitySet="ProjectStages">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="ProjectId" ColumnName="project_id" />
+          <ScalarProperty Name="StageId" ColumnName="stage_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectTypes">
+      <EntityTypeMapping TypeName="SKursachModel.ProjectType">
+        <MappingFragment StoreEntitySet="ProjectTypes">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stages">
+      <EntityTypeMapping TypeName="SKursachModel.Stage">
+        <MappingFragment StoreEntitySet="Stages">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+          <ScalarProperty Name="StartDate" ColumnName="date_of_start" />
+          <ScalarProperty Name="FinishDate" ColumnName="date_of_finish" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="SKursachModel.Subject">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="Name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectGroups">
+      <EntityTypeMapping TypeName="SKursachModel.SubjectGroup">
+        <MappingFragment StoreEntitySet="SubjectGroups">
+          <ScalarProperty Name="GroupId" ColumnName="group_id" />
+          <ScalarProperty Name="SubjectId" ColumnName="subject_id" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectGroups">
+      <EntityTypeMapping TypeName="SKursachModel.ProjectGroup">
+        <MappingFragment StoreEntitySet="ProjectGroups">
+          <ScalarProperty Name="GroupId" ColumnName="group_id" />
+          <ScalarProperty Name="ProjectId" ColumnName="project_id" />
+          <ScalarProperty Name="Id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

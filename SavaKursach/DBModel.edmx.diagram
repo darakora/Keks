@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f90d8aa76a324e4dbca74cd78390bf76" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="SKursachModel.Customer" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Empolee" Width="1.5" PointX="8" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Group" Width="1.5" PointX="8" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Platform" Width="1.5" PointX="0.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Position" Width="1.5" PointX="5.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Project" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.ProjectStage" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.ProjectType" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Stage" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SKursachModel.Subject" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="SKursachModel.FK__Projects__custom__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__Empoleeys__posit__2DB1C7EE" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__Empoleeys__subje__2EA5EC27" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__Groups__subject___1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__Projects__platfo__2334397B" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__Projects__type_i__24285DB4" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__ProjectSt__proje__29E1370A" ManuallyRouted="false" />
+        <AssociationConnector Association="SKursachModel.FK__ProjectSt__stage__2AD55B43" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SKursachModel.SubjectGroup" Width="1.5" PointX="10.25" PointY="8.625" />
+        <AssociationConnector Association="SKursachModel.FK__SubjectGr__group__093F5D4E" />
+        <AssociationConnector Association="SKursachModel.FK__SubjectGr__subje__084B3915" />
+        <EntityTypeShape EntityType="SKursachModel.ProjectGroup" Width="1.5" PointX="10.25" PointY="5.75" />
+        <AssociationConnector Association="SKursachModel.FK__ProjectGr__group__66B53B20" />
+        <AssociationConnector Association="SKursachModel.FK__ProjectGr__proje__65C116E7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
